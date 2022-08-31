@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="335275a8-0235-4925-aa62-256cfe364d19" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid25191.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid25209.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid26295.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid26886.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/group20/inventory/inventory/algorithms/Algorithms.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/group20/inventory/inventory/controllers/ProductFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group20/inventory/inventory/product-form.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group20/inventory/inventory/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group20/inventory/inventory/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group20/inventory/inventory/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group20/inventory/inventory/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group20/inventory/inventory/controllers/ProductPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group20/inventory/inventory/controllers/ProductPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group20/inventory/inventory/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group20/inventory/inventory/models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group20/inventory/inventory/home-page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group20/inventory/inventory/home-page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group20/inventory/inventory/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group20/inventory/inventory/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group20/inventory/inventory/product-page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group20/inventory/inventory/product-page.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,20 +71,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "jdk.selected.JAVA_MODULE": "11",
-    "last_directory_selection": "/Users/hrd/Library/Mobile Documents/com~apple~CloudDocs/UG/2021 2022/Sem 2/DCIT308/inventory/src/main/resources/com/group20/inventory/inventory",
-    "last_opened_file_path": "/Users/hrd/Library/Mobile Documents/com~apple~CloudDocs/UG/2021 2022/Sem 2/DCIT308/inventory/src",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "advanced.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/hrd/Library/Mobile Documents/com~apple~CloudDocs/UG/2021 2022/Sem 2/DCIT308/inventory/src/main/resources/com/group20/inventory/inventory&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hrd/Library/Mobile Documents/com~apple~CloudDocs/UG/2021 2022/Sem 2/DCIT308/inventory/src&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />

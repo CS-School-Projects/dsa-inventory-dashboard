@@ -1,52 +1,141 @@
 package com.group20.inventory.inventory.controllers;
 
+import com.group20.inventory.inventory.MainApplication;
+import com.group20.inventory.inventory.algorithms.Algorithms;
 import com.group20.inventory.inventory.models.Product;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ProductPageController implements Initializable {
-    @FXML
-    public TableView tableView;
-
-    @FXML
-    protected void buttonClicked(ActionEvent event) {
-        System.out.println("Clicked");
-    }
-
+    public TableView<Product> tableView;
+    public TextField searchInput;
+    public static volatile ProductPageController instance;
+    public Product currentProduct;
+    private Stack<Product> productStack;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        initTableView();
-    }
+        instance = this;
+        tableView.setEditable(true);
+        productStack = new Stack<>();
+        productStack.addAll(Product.selectAllObjects());
+        loadTableData();
 
-    private void initTableView() {
+        // Setup table
         TableColumn<Product, String> column1 =
                 new TableColumn<>("Name");
-
         column1.setCellValueFactory(
                 new PropertyValueFactory<>("name"));
-
-
-        TableColumn<String, String> column2 =
+        TableColumn<Product, String> column2 =
                 new TableColumn<>("Price");
-
         column2.setCellValueFactory(
                 new PropertyValueFactory<>("price"));
-
-
+        TableColumn<Product, String> column3 =
+                new TableColumn<>("Quantity");
+        column3.setCellValueFactory(
+                new PropertyValueFactory<>("quantity"));
+        TableColumn<Product, String> column4 =
+                new TableColumn<>("Category");
+        column4.setCellValueFactory(
+                new PropertyValueFactory<>("category"));
+        TableColumn<Product, String> actionCol = new TableColumn<>("Actions");
         tableView.getColumns().add(column1);
         tableView.getColumns().add(column2);
+        tableView.getColumns().add(column3);
+        tableView.getColumns().add(column4);
+        tableView.getColumns().add(actionCol);
 
-        tableView.getItems().add(
-                new Product("John", 444));
-        tableView.getItems().add(
-                new Product("Jane", 44));
+        actionCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        // Add a custom cell button for editing table entries.
+        Callback<TableColumn<Product, String>, TableCell<Product, String>> cellFactory =
+                new Callback<>() {
+                    @Override
+                    public TableCell<Product, String> call(final TableColumn<Product, String> param) {
+                        final TableCell<Product, String> cell = new TableCell<>() {
+                            final Button button = new Button("Edit this");
+                            @Override
+                            public void updateItem(String item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (empty) {
+                                    setGraphic(null);
+                                } else {
+                                    button.setOnAction(event -> {
+                                        currentProduct = getTableView().getItems().get(getIndex());
+                                        showProductForm();
+                                    });
+                                    setGraphic(button);
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                };
+        actionCol.setCellFactory(cellFactory);
+    }
+
+    private void loadTableData() {
+        tableView.getItems().removeAll();
+        tableView.getItems().setAll(productStack);
+    }
+
+    private void showProductForm() {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(MainApplication.class.getResource("product-form.fxml")));
+        } catch (IOException ignore) {
+            System.out.println("View not found.");
+            return;
+        }
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Product Form");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void addNewProduct() {
+        currentProduct = null;
+        showProductForm();
+    }
+
+    public void reloadPage() {
+        productStack = new Stack<>();
+        productStack.addAll(Product.selectAllObjects());
+        loadTableData();
+    }
+
+    public void deleteLastAddedItem() {
+        Stack<Product> stack = new Stack<>();
+        stack.addAll(List.copyOf(productStack));
+        Collections.reverse(stack);
+        Product product = stack.pop();
+        Product.deleteObject(product.getId());
+        reloadPage();
+    }
+
+    @FXML
+    public void searchProducts() {
+        String query = searchInput.getText();
+        if (query.isEmpty()) {
+            reloadPage();
+            return;
+        }
+        Algorithms<Product> algorithms = new Algorithms<>();
+        List<Product> newItems = algorithms.linearSearch(productStack, query);
+        productStack = new Stack<>();
+        productStack.addAll(newItems);
+        loadTableData();
     }
 }

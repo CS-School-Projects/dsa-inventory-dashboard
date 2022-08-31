@@ -22,12 +22,11 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
     public Button issuedProductsButton;
     public AnchorPane mainContent;
-    public Button categoryButton;
     public VBox sideBarMenu;
 
     @FXML
     protected void switchPage(ActionEvent event) {
-        String btnActiveClass = "-fx-background-color:rgba(0,0,0,0.2)";
+        String btnActiveClass = "-fx-background-color:rgba(0,0,0,0.4)";
         Button button = (Button) event.getSource();
         Object data = button.getUserData();
         if (data != null) {

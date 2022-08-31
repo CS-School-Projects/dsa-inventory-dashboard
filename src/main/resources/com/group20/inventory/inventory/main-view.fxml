@@ -7,43 +7,72 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group20.inventory.inventory.controllers.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="1080.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.group20.inventory.inventory.controllers.MainController">
     <children>
-        <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <VBox fx:id="sideBarMenu" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(30,40,140);">
+                <VBox fx:id="sideBarMenu" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #005;">
                     <children>
-                        <ImageView fx:id="logoView" fitHeight="50.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button defaultButton="true" mnemonicParsing="false" onAction="#switchPage" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: left;" text="Home" userData="home-page.fxml">
+                        <ImageView fx:id="logoView" fitHeight="50.0" fitWidth="200.0" pickOnBounds="true"
+                                   preserveRatio="true"/>
+                        <Button defaultButton="true" mnemonicParsing="false" onAction="#switchPage" prefHeight="45.0"
+                                prefWidth="200.0"
+                                style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: center-left;"
+                                text="Home" userData="home-page.fxml">
                             <font>
-                                <Font name="System Bold" size="20.0" />
+                                <Font name="System Bold" size="20.0"/>
                             </font>
                         </Button>
-                        <Button defaultButton="true" mnemonicParsing="false" onAction="#switchPage" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: left;" text="Product" userData="product-page.fxml">
+                        <Button defaultButton="true" mnemonicParsing="false" onAction="#switchPage" prefHeight="45.0"
+                                prefWidth="200.0"
+                                style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: center-left;"
+                                text="Product" userData="product-page.fxml">
                             <font>
-                                <Font name="System Bold" size="20.0" />
+                                <Font name="System Bold" size="20.0"/>
                             </font>
                         </Button>
-                        <Button defaultButton="true" mnemonicParsing="false" onAction="#switchPage" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: left;" text="Vendors" userData="vendors-page.fxml">
+                        <Button defaultButton="true" mnemonicParsing="false" onAction="#switchPage" prefHeight="45.0"
+                                prefWidth="200.0"
+                                style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: center-left;"
+                                text="Vendors" userData="vendors-page.fxml">
                             <font>
-                                <Font name="System Bold" size="20.0" />
+                                <Font name="System Bold" size="20.0"/>
                             </font>
                         </Button>
-                        <Button fx:id="issuedProductsButton" defaultButton="true" mnemonicParsing="false" onAction="#switchPage" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: left;" text="Issued" userData="issued-page.fxml">
+                        <Button fx:id="issuedProductsButton" defaultButton="true" mnemonicParsing="false"
+                                onAction="#switchPage" prefHeight="45.0" prefWidth="200.0"
+                                style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: center-left;"
+                                text="Issued" userData="issued-page.fxml">
                             <font>
-                                <Font name="System Bold" size="20.0" />
+                                <Font name="System Bold" size="20.0"/>
                             </font>
                         </Button>
-                        <Button defaultButton="true" mnemonicParsing="false" onAction="#switchPage" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: left;" text="Category" userData="category-page.fxml">
+                        <Button defaultButton="true" mnemonicParsing="false" onAction="#switchPage" prefHeight="45.0"
+                                prefWidth="200.0"
+                                style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: center-left;"
+                                text="Category" userData="category-page.fxml">
                             <font>
-                                <Font name="System Bold" size="20.0" />
+                                <Font name="System Bold" size="20.0"/>
+                            </font>
+                        </Button>
+                        <Button defaultButton="true" mnemonicParsing="false" onAction="#switchPage" prefHeight="45.0"
+                                prefWidth="200.0"
+                                style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: center-left;"
+                                text="Sales" userData="vendors-page.fxml">
+                            <font>
+                                <Font name="System Bold" size="20.0"/>
                             </font>
                         </Button>
                     </children>
                 </VBox>
             </children>
         </HBox>
-        <AnchorPane fx:id="mainContent" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-        <Button mnemonicParsing="false" onAction="#exitWindow" style="-fx-background-color: red;" text="X" textFill="WHITE" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+        <AnchorPane fx:id="mainContent" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+        <Button mnemonicParsing="false" onAction="#exitWindow" style="-fx-background-color: red;" text="X"
+                textFill="WHITE" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0"/>
     </children>
 </AnchorPane>

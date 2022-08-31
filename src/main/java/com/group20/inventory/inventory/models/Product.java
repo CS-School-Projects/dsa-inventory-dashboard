@@ -28,11 +28,6 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    public Product(String name, float price) {
-        this.name = name;
-        this.price = price;
-    }
-
     private Product(int id, String name, float price, float sellingPrice, int quantity, Category category) {
         this.id = id;
         this.name = name;
@@ -59,6 +54,30 @@ public class Product {
         return sellingPrice;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public void setSellingPrice(float sellingPrice) {
+        this.sellingPrice = sellingPrice;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public Category getCategory() {
         if (category == null) this.category = Category.getObjectById(categoryId);
         return this.category;
@@ -69,7 +88,7 @@ public class Product {
         return this.id + " " + this.name;
     }
 
-    public static Product createObject(String name,
+    public static boolean createObject(String name,
                                        float price,
                                        float sellingPrice,
                                        int quantity,
@@ -81,7 +100,7 @@ public class Product {
         try {
             Statement statement = CONNECTION.createStatement();
             int result = statement.executeUpdate(query);
-            return new Product(result, name, price, sellingPrice, quantity, category);
+            return result > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -117,9 +136,23 @@ public class Product {
         return null;
     }
 
+    public boolean updateProduct() {
+        String query = String.format(
+                "UPDATE products SET name='%s',price='%f',selling_price='%f',quantity='%d',category_id='%d' WHERE id='%d'",
+                name, price, sellingPrice, quantity, category.getId(),id);
+        try {
+            Statement statement = CONNECTION.createStatement();
+            int affectedRow = statement.executeUpdate(query);
+            return affectedRow > 0;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
     public static List<Product> selectAllObjects() {
         ArrayList<Product> result = new ArrayList<>();
-        String query = "SELECT * FROM products;";
+        String query = "SELECT * FROM products ORDER BY id DESC;";
         try {
             Statement statement = CONNECTION.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -136,5 +169,9 @@ public class Product {
             throw new RuntimeException(e);
         }
         return result;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }

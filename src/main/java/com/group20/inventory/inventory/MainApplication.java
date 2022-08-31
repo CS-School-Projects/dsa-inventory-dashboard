@@ -1,7 +1,5 @@
 package com.group20.inventory.inventory;
 
-import com.group20.inventory.inventory.models.Category;
-import com.group20.inventory.inventory.models.Product;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,12 +36,12 @@ public class MainApplication extends Application {
     public static void main(String[] args) {
 //        Category.createObject("Cleaners");
 //        int result = Category.deleteObject(2);
-
+//
 //        Category category = Category.getObjectByName("Cleaners");
 //        Product product = Product.createObject("Rice", 33.3F, 44.4F, 32, category);
 //        System.out.println(product);
 //        System.out.println(product.getCategory());
-
+//
 //        for(Category category : Category.selectAllObjects()){
 //            System.out.println(category.toString());
 //        }
