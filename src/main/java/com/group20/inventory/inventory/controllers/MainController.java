@@ -7,11 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -49,8 +46,8 @@ public class MainController implements Initializable {
             Parent node = FXMLLoader.load(Objects.requireNonNull(MainApplication.class.getResource(fxmlName)));
             mainContent.getChildren().removeAll();
             mainContent.getChildren().setAll(node);
-        } catch (IOException ignored) {
-            System.out.println("View not found");
+        } catch (IOException e) {
+            System.out.println(fxmlName + ": " + e);
         }
     }
 

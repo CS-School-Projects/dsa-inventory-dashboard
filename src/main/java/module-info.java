@@ -1,4 +1,4 @@
-module com.group20.inventory.inventory {
+module com.group.inventory.inventory {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;

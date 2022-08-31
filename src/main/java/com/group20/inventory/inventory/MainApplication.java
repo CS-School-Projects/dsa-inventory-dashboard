@@ -1,5 +1,6 @@
 package com.group20.inventory.inventory;
 
+import com.group20.inventory.inventory.utils.DBConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.Objects;
 
 public class MainApplication extends Application {
@@ -30,6 +32,8 @@ public class MainApplication extends Application {
             stage.setX(event.getScreenX()-winX);
             stage.setY(event.getScreenY()-winY);
         });
+
+        DBConnection.getConnection();
     }
 
 

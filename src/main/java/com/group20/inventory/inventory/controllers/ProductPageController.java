@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -20,6 +22,7 @@ import java.util.*;
 public class ProductPageController implements Initializable {
     public TableView<Product> tableView;
     public TextField searchInput;
+    public Text sizeLabel;
     public static volatile ProductPageController instance;
     public Product currentProduct;
     private Stack<Product> productStack;
@@ -62,11 +65,16 @@ public class ProductPageController implements Initializable {
                 new Callback<>() {
                     @Override
                     public TableCell<Product, String> call(final TableColumn<Product, String> param) {
-                        final TableCell<Product, String> cell = new TableCell<>() {
-                            final Button button = new Button("Edit this");
+                        return new TableCell<>() {
+
                             @Override
                             public void updateItem(String item, boolean empty) {
                                 super.updateItem(item, empty);
+
+                                final HBox hBox = new HBox();
+                                final Button button = new Button("Edit this");
+                                final Button issueButton = new Button("Issue this");
+
                                 if (empty) {
                                     setGraphic(null);
                                 } else {
@@ -74,11 +82,19 @@ public class ProductPageController implements Initializable {
                                         currentProduct = getTableView().getItems().get(getIndex());
                                         showProductForm();
                                     });
-                                    setGraphic(button);
+                                    issueButton.setOnAction(event -> {
+                                        currentProduct = getTableView().getItems().get(getIndex());
+                                        if (IssuedProductPageController.instance != null)
+                                            IssuedProductPageController.instance.currentIssuedProduct = null;
+                                        showIssuedProductForm();
+                                    });
+
+                                    hBox.getChildren().add(button);
+                                    hBox.getChildren().add(issueButton);
+                                    setGraphic(hBox);
                                 }
                             }
                         };
-                        return cell;
                     }
                 };
         actionCol.setCellFactory(cellFactory);
@@ -87,6 +103,7 @@ public class ProductPageController implements Initializable {
     private void loadTableData() {
         tableView.getItems().removeAll();
         tableView.getItems().setAll(productStack);
+        sizeLabel.setText(productStack.size() + " Items(s)");
     }
 
     private void showProductForm() {
@@ -95,6 +112,21 @@ public class ProductPageController implements Initializable {
             root = FXMLLoader.load(Objects.requireNonNull(MainApplication.class.getResource("product-form.fxml")));
         } catch (IOException ignore) {
             System.out.println("View not found.");
+            return;
+        }
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Product Form");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void showIssuedProductForm() {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(MainApplication.class.getResource("issued-product-form.fxml")));
+        } catch (IOException e) {
+            System.out.println("Issued Product Form: " + e.getMessage());
             return;
         }
         Scene scene = new Scene(root);

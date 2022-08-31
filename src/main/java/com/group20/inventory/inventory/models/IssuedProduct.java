@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IssuedProduct {
-    private final long timestamp;
-    private final int id;
-    private final int productId;
-    private final int quantity;
-    private final int vendorId;
-    private final float grossPrice;
+    private long timestamp;
+    private int id;
+    private int productId;
+    private int quantity;
+    private int vendorId;
+    private float grossPrice;
     private Product product = null;
     private Vendor vendor = null;
 
@@ -38,12 +38,64 @@ public class IssuedProduct {
 
     public Vendor getVendor() {
         if (vendor == null)
-            vendor = Vendor.getObjectById(this.productId);
+            vendor = Vendor.getObjectById(this.vendorId);
         return vendor;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setVendorId(int vendorId) {
+        this.vendorId = vendorId;
+    }
+
+    public void setGrossPrice(float grossPrice) {
+        this.grossPrice = grossPrice;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public int getVendorId() {
+        return vendorId;
+    }
+
+    public float getGrossPrice() {
+        return grossPrice;
     }
 
     @Override
@@ -53,7 +105,7 @@ public class IssuedProduct {
 
     public static IssuedProduct createObject(long timestamp, int productId, int vendorId, int quantity, float grossPrice) {
         String query = String.format(
-                "INSERT INTO issued_products (timestamp,product_id,vendor_id,quantity,grossPrice) VALUES('%d','%d','%d','%d','%f')",
+                "INSERT INTO issued_products (timestamp,product_id,vendor_id,quantity,gross_price) VALUES('%d','%d','%d','%d','%f')",
                 timestamp, productId, vendorId, quantity, grossPrice);
         try {
             Statement statement = CONNECTION.createStatement();
@@ -64,11 +116,26 @@ public class IssuedProduct {
         }
     }
 
-    public static int deleteObject(int id) {
+    public boolean updateIssuedProduct() {
+        String query = String.format(
+                "UPDATE issued_products SET quantity='%d',vendor_id='%d' WHERE id='%d'",
+                quantity, vendorId, id);
+        try {
+            Statement statement = CONNECTION.createStatement();
+            int affectedRow = statement.executeUpdate(query);
+            return affectedRow > 0;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+
+    public static boolean deleteObject(int id) {
         String query = "DELETE FROM issued_products where id =" + id + ";";
         try {
             Statement statement = CONNECTION.createStatement();
-            return statement.executeUpdate(query);
+            return statement.executeUpdate(query) > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

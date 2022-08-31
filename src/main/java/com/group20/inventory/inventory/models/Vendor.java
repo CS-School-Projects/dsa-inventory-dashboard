@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Vendor {
-    private final String name;
+    private String name;
     private final int id;
     private static final Connection CONNECTION = DBConnection.getConnection();
+
     private Vendor(int id, String name) {
         this.id = id;
         this.name = name;
@@ -24,6 +25,10 @@ public class Vendor {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -39,6 +44,20 @@ public class Vendor {
             return new Vendor(result, name);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public boolean updateVendor() {
+        String query = String.format(
+                "UPDATE vendors SET name='%s' WHERE id='%d'",
+                name, id);
+        try {
+            Statement statement = CONNECTION.createStatement();
+            int affectedRow = statement.executeUpdate(query);
+            return affectedRow > 0;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
     }
 
@@ -66,23 +85,9 @@ public class Vendor {
         return null;
     }
 
-    public static Vendor getObjectByName(String name) {
-        String query = String.format("SELECT * FROM vendors where name = '%s'", name);
-        try {
-            Statement statement = CONNECTION.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            if (resultSet.next()) {
-                return new Vendor(resultSet.getInt("id"), resultSet.getString("name"));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return null;
-    }
-
     public static List<Vendor> selectAllObjects() {
         ArrayList<Vendor> result = new ArrayList<>();
-        String query = "SELECT * FROM vendors;";
+        String query = "SELECT * FROM vendors ORDER BY id DESC;";
         try {
             Statement statement = CONNECTION.createStatement();
             ResultSet resultSet = statement.executeQuery(query);

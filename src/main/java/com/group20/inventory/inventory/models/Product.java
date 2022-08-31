@@ -121,7 +121,7 @@ public class Product {
         try {
             Statement statement = CONNECTION.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
-            if (resultSet.first()) {
+            if (resultSet.next()) {
                 return new Product(resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getFloat("price"),
@@ -146,8 +146,8 @@ public class Product {
             return affectedRow > 0;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return false;
         }
+        return false;
     }
 
     public static List<Product> selectAllObjects() {
