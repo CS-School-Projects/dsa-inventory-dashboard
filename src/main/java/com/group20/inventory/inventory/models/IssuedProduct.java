@@ -185,4 +185,11 @@ public class IssuedProduct {
         }
         return result;
     }
+
+    public String getVendorName() {
+        Vendor vendor = getVendor();
+        if (vendor != null)
+            return vendor.getName();
+        return "<no-name>";
+    }
 }

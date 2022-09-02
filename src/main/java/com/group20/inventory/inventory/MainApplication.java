@@ -19,7 +19,7 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main-view.fxml")));
         Scene scene = new Scene(root);
-        stage.initStyle(StageStyle.UNDECORATED);
+//        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
 
@@ -38,17 +38,7 @@ public class MainApplication extends Application {
 
 
     public static void main(String[] args) {
-//        Category.createObject("Cleaners");
-//        int result = Category.deleteObject(2);
-//
-//        Category category = Category.getObjectByName("Cleaners");
-//        Product product = Product.createObject("Rice", 33.3F, 44.4F, 32, category);
-//        System.out.println(product);
-//        System.out.println(product.getCategory());
-//
-//        for(Category category : Category.selectAllObjects()){
-//            System.out.println(category.toString());
-//        }
+
         launch();
     }
 }

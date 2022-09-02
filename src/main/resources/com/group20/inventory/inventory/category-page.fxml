@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
             AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/18"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.group20.inventory.inventory.controllers.ProductPageController">
+            fx:controller="com.group20.inventory.inventory.controllers.CategoryPageController">
     <children>
         <VBox prefHeight="50.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -17,7 +17,7 @@
                 <AnchorPane prefHeight="50.0" prefWidth="200.0">
                     <children>
                         <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="PRODUCTS (Stack)" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.59765625">
+                              text="CATEGORY (Stack)" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.59765625">
                             <font>
                                 <Font size="18.0"/>
                             </font>
@@ -46,14 +46,14 @@
                                               AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
                                                 <TextField fx:id="searchInput"/>
-                                                <Button mnemonicParsing="false" onAction="#searchProducts"
+                                                <Button mnemonicParsing="false" onAction="#searchCategories"
                                                         prefHeight="26.0" prefWidth="88.0" text="Search"/>
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0"
                                               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
-                                                <Button mnemonicParsing="false" onAction="#addNewProduct" text="Push"/>
+                                                <Button mnemonicParsing="false" onAction="#addNewCategory" text="Push"/>
                                                 <Button mnemonicParsing="false" onAction="#deleteLastAddedItem"
                                                         text="Pop"/>
                                             </children>

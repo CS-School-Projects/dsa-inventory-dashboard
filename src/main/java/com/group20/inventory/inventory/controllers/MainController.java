@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -20,6 +21,7 @@ public class MainController implements Initializable {
     public Button issuedProductsButton;
     public AnchorPane mainContent;
     public VBox sideBarMenu;
+    public ImageView logoView;
 
     @FXML
     protected void switchPage(ActionEvent event) {

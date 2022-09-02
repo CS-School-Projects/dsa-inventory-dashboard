@@ -35,6 +35,8 @@ javafx {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // https://mvnrepository.com/artifact/org.openjfx/javafx-web
+    implementation 'org.openjfx:javafx-web:14'
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }

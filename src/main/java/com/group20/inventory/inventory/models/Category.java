@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
-    private final String name;
-    private final int id;
+    private String name;
+    private int id;
     private static final Connection CONNECTION = DBConnection.getConnection();
 
     private Category(int id, String name) {
@@ -25,6 +25,10 @@ public class Category {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -67,23 +71,20 @@ public class Category {
         return null;
     }
 
-    public static Category getObjectByName(String name) {
-        String query = String.format("SELECT * FROM categories where name = '%s'", name);
+    public boolean updateCategory() {
+        String query = String.format("UPDATE categories SET name='%s' WHERE id='%d'", name, id);
         try {
             Statement statement = CONNECTION.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            if (resultSet.next()) {
-                return new Category(resultSet.getInt("id"), resultSet.getString("name"));
-            }
+            return statement.executeUpdate(query) > 0;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public static List<Category> selectAllObjects() {
         ArrayList<Category> result = new ArrayList<>();
-        String query = "SELECT * FROM categories;";
+        String query = "SELECT * FROM categories ORDER BY id DESC;";
         try {
             Statement statement = CONNECTION.createStatement();
             ResultSet resultSet = statement.executeQuery(query);

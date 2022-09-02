@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -13,8 +15,27 @@
             <children>
                 <VBox fx:id="sideBarMenu" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #005;">
                     <children>
-                        <ImageView fx:id="logoView" fitHeight="50.0" fitWidth="200.0" pickOnBounds="true"
-                                   preserveRatio="true"/>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fx:id="logoView" fitHeight="50.0" fitWidth="200.0" pickOnBounds="true"
+                                           preserveRatio="true">
+                                    <image>
+                                        <Image url="@logo.png"/>
+                                    </image>
+                                </ImageView>
+                                <Label text="Inventory System" textFill="WHITE">
+                                    <opaqueInsets>
+                                        <Insets left="20.0"/>
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets left="10.0"/>
+                                    </HBox.margin>
+                                    <font>
+                                        <Font size="18.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
                         <Button defaultButton="true" mnemonicParsing="false" onAction="#switchPage" prefHeight="45.0"
                                 prefWidth="200.0"
                                 style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: center-left;"
@@ -58,7 +79,7 @@
                         <Button defaultButton="true" mnemonicParsing="false" onAction="#switchPage" prefHeight="45.0"
                                 prefWidth="200.0"
                                 style="-fx-background-color: #fff0; -fx-text-fill: #fff; -fx-alignment: center-left;"
-                                text="Sales" userData="vendors-page.fxml">
+                                text="Report" userData="report-page.fxml">
                             <font>
                                 <Font name="System Bold" size="20.0"/>
                             </font>
